@@ -3,44 +3,67 @@ import { MdSpaceDashboard } from "react-icons/md";
 import { AiFillCalendar, AiOutlineTable } from "react-icons/ai";
 import { FaTasks } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
+
 const Sidebar = () => {
     return (
-        <div className={css.container}>
+        <aside className={css.container}>
+            <div className={css.logoWrapper}>
+                <img src="./logo.png" alt="logo" className={css.logo} />
+            </div>
 
-            <img src="./logo.png" alt="logo" className={css.logo} />
-
-
-            <div className={css.menu}>
-                <NavLink to="dashboard" className={css.item} title={"Dashboard"}>
-                    <MdSpaceDashboard size={30} />
+            <nav className={css.menu}>
+                <NavLink
+                    to="dashboard"
+                    className={({ isActive }) =>
+                        `${css.item} ${isActive ? css.active : ""}`
+                    }
+                    title="Dashboard"
+                    aria-label="Dashboard"
+                    end
+                >
+                    <MdSpaceDashboard size={24} />
                 </NavLink>
-                
+
                 <NavLink
                     to="calendar"
-                    className={css.item}
+                    className={({ isActive }) =>
+                        `${css.item} ${isActive ? css.active : ""}`
+                    }
                     title="Calendar"
+                    aria-label="Calendar"
                 >
-                    <AiFillCalendar size={30} />
+                    <AiFillCalendar size={24} />
                 </NavLink>
 
                 <NavLink
                     to="board"
-                    className={css.item}
+                    className={({ isActive }) =>
+                        `${css.item} ${isActive ? css.active : ""}`
+                    }
                     title="Trello Board"
+                    aria-label="Trello Board"
                 >
-                    <FaTasks size={30} />
+                    <FaTasks size={22} />
                 </NavLink>
 
                 <NavLink
                     to="users"
-                    className={css.item}
+                    className={({ isActive }) =>
+                        `${css.item} ${isActive ? css.active : ""}`
+                    }
                     title="Users"
+                    aria-label="Users"
                 >
-                    <AiOutlineTable size={30} />
+                    <AiOutlineTable size={24} />
                 </NavLink>
-            </div>
-        </div>
-    )
-}
+            </nav>
 
-export default Sidebar
+            {/* Optional bottom section – you can later add avatar / settings here */}
+            <div className={css.bottom}>
+                <span className={css.appName}>Service Desk</span>
+            </div>
+        </aside>
+    );
+};
+
+export default Sidebar;
