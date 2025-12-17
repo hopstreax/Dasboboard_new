@@ -60,7 +60,7 @@ body {
   width: 250px;
   height: 250px;
   border-radius: 50%;
-  filter: blur(100px);
+  filter: blur(90px);
   z-index: 0;
 }
 
